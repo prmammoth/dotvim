@@ -1,0 +1,4 @@
+source .vimrc_plug
+source .vimrc
+source coc.vim
+source.vimrc_cfuncs

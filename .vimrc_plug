@@ -1,0 +1,108 @@
+" Prerequisites:
+" - neovim >= 0.5
+" - rust-analyzer: https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
+
+" Steps:
+" - :PlugInstall
+" - Restart
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'itchyny/calendar.vim'
+
+Plug 'neoclide/coc.nvim'
+
+"Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+"Get a fully functional dynamic tag support"
+Plug 'ludovicchabant/vim-gutentags'
+
+"Get support for inserting docstrings
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'himkt/docstring.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'stsewd/sphinx.nvim', { 'do': ':UpdateRemotePlugins' }
+
+"Get the tag list going in vim. I am using something else vista.vim now
+"though. May obsolete this one
+Plug 'preservim/tagbar'
+
+"Fugitive for git fugitive bindings
+Plug 'tpope/vim-fugitive'
+
+" Collection of common configurations for the Nvim LSP client
+"Plug 'neovim/nvim-lspconfig'
+
+" Extentions to built-in LSP, for example, providing type inlay hints
+"Plug 'tjdevries/lsp_extensions.nvim'
+
+" Autocompletion framework for built-in LSP
+"Plug 'nvim-lua/completion-nvim'
+
+" Diagnostic navigation and settings for built-in LSP
+"Plug 'nvim-lua/diagnostic-nvim'
+
+
+"Themes for work
+Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+
+
+"Organizing my work
+Plug 'vimwiki/vimwiki'
+"Task management plugins
+"Plug 'tools-life/taskwiki'
+"Plug 'farseer90718/vim-taskwarrior'
+
+"Code productivity
+"Code browsing 
+Plug 'scrooloose/nerdtree'
+
+Plug 'scrooloose/nerdcommenter'                             " NERD commenter. Quickly comment lines
+
+"Plug 'scrooloose/nerdtree-git-plugin'
+
+"Working with angularjs
+Plug 'burnettk/vim-angular'
+
+"Working with html, javascript and vuejs
+
+Plug 'herringtondarkholme/yats.vim'                         " Typescript syntax
+Plug 'posva/vim-vue'                                        " Vue JS syntax highlighting
+Plug 'maxmellon/vim-jsx-pretty'                             " JSX syntax
+Plug 'prettier/vim-prettier'                                " Prettier - automatically format file according to rules/editorconfig
+Plug 'othree/xml.vim'                                       " to work with HTML/XML tags, see https://www.vim.org/scripts/script.php?script_id=1397
+Plug 'othree/html5.vim'                                     " html5
+Plug 'cakebaker/scss-syntax.vim'  
+" SCSS syntax
+
+" A beautiful status line
+"Plug 'itchyny/lightline.vim'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"Get the buffers as tablines
+"Plug 'ap/vim-buftabline'                                    " buffers to tabline, shows buffers as tabs on top of window
+
+
+
+"Supercharge my search using fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+"something better than the tagbar
+Plug 'liuchengxu/vista.vim'
+
+"Jira plugin for vim
+"Plug 'paulkass/jira-vim', { 'do': 'pip3 install -r requirements.txt' }
+
+"Vim signify improves the gutter in vim
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'dmerejkowsky/vim-ale'
+
+Plug 'heavenshell/vim-pydocstring', {'do': 'make install'}
+
+call plug#end()
