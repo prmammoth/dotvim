@@ -1,4 +1,4 @@
-"set the termguicolors
+"st the termguicolors
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -16,6 +16,14 @@ set shiftwidth=4
 "Folding options for the files
 set foldmethod=syntax
 
+
+"Highlight the line containing cursor
+set cursorline
+hi cursorline cterm=none term=none
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+highlight CursorLine guibg=#303000 ctermbg=234
+
 "General set of options
 "Vim would not auto detect file types
 filetype off
@@ -25,7 +33,9 @@ filetype plugin indent on
 
 
 "Create a new tab
-nnoremap <Leader>t :tabnew<CR>
+nnoremap <Leader>T :tabnew<CR>
+nnoremap <Leader>. :tabnext<CR>
+nnoremap <Leader>, :tabprev<CR>
 
 "Set up navigation to move between panes in nvim
 nnoremap <C-Down> <C-W>j
@@ -185,6 +195,7 @@ set guifont=Monospace\ 11
 autocmd FileType vimwiki let b:coc_suggest_disable = 1
 
 au bufreadpre,bufnewfile *.bnf set ft=bnf" 
+au bufreadpre,bufnewfile wiki setlocal textwidth=80" 
 
 "For codelens
 nmap <silent> <M-q> <Plug>(coc-codelens-action)
@@ -199,3 +210,41 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+
+
+"auto insert closing braces
+
+"inoremap " ""<left>
+"inoremap ' ''<left>
+"inoremap ( ()<left>
+"inoremap [ []<left>
+"inoremap { {}<left>
+"inoremap {<CR> {<CR>}<ESC>O
+"inoremap {;<CR> {<CR>};<ESC>O
+
+" Fix auto-indentation for YAML files
+augroup yaml_fix
+    autocmd!
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
+augroup END
+
+" The following few lines are for the coc-spell-checker. reference https://github.com/iamcco/coc-spell-checker
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
+
+"This is to ensure that only the comments break at certain number of columns
+augroup comment_textwidth
+    autocmd!
+    autocmd TextChanged,TextChangedI * :call AdjustTextWidth()
+augroup END
+
+function! AdjustTextWidth()
+    let syn_element = synIDattr(synID(line("."), col(".") - 1, 1), "name")
+    let &textwidth = syn_element =~? 'comment' ? 72 : 79
+    echo "tw = " . &textwidth
+endfunction
+
+"Configuration for vim-doge the documentation plugin
+let g:doge_enable_mappings = 0
+let g:doge_doc_standard_python = 'google'
+nmap <Leader>cd <Plug>(doge-generate)

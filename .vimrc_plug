@@ -57,11 +57,10 @@ Plug 'vimwiki/vimwiki'
 "Code productivity
 "Code browsing 
 Plug 'scrooloose/nerdtree'
-
 Plug 'scrooloose/nerdcommenter'                             " NERD commenter. Quickly comment lines
 
-"Plug 'scrooloose/nerdtree-git-plugin'
-
+"Git integration for nerdtree"
+Plug 'Xuyuanp/nerdtree-git-plugin'
 "Working with angularjs
 Plug 'burnettk/vim-angular'
 
@@ -104,5 +103,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'dmerejkowsky/vim-ale'
 
 Plug 'heavenshell/vim-pydocstring', {'do': 'make install'}
-
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+"Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 call plug#end()
