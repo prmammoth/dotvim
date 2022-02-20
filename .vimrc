@@ -11,10 +11,10 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-
+set foldmethod=syntax
 
 "Folding options for the files
-set foldmethod=syntax
+"set foldmethod=syntax
 
 
 "Highlight the line containing cursor
@@ -169,8 +169,10 @@ set updatetime=300
 " EOF
 
 "Do word wrapping only in vimwiki files
-autocmd FileType vimwiki set wrap textwidth=80 formatoptions-=t
-autocmd FileType rst set wrap textwidth=80 formatoptions-=t
+"autocmd FileType vimwiki set wrap textwidth=80 formatoptions-=t
+"autocmd FileType rst set wrap textwidth=80 formatoptions-=t
+
+set formatoptions=crqto
 
 let g:diagnostic_enable_underline = 1
 
@@ -241,10 +243,24 @@ augroup END
 function! AdjustTextWidth()
     let syn_element = synIDattr(synID(line("."), col(".") - 1, 1), "name")
     let &textwidth = syn_element =~? 'comment' ? 72 : 79
-    echo "tw = " . &textwidth
 endfunction
 
 "Configuration for vim-doge the documentation plugin
 let g:doge_enable_mappings = 0
 let g:doge_doc_standard_python = 'google'
 nmap <Leader>cd <Plug>(doge-generate)
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+
+set cmdheight=2
+let g:echodoc_enable_at_startup = 1
+let g:echodoc_type = "signature"

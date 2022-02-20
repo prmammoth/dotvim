@@ -30,6 +30,9 @@ Plug 'preservim/tagbar'
 "Fugitive for git fugitive bindings
 Plug 'tpope/vim-fugitive'
 
+"Plugin for the icons
+Plug 'ryanoasis/vim-devicons'
+
 " Collection of common configurations for the Nvim LSP client
 "Plug 'neovim/nvim-lspconfig'
 
@@ -105,5 +108,12 @@ Plug 'dmerejkowsky/vim-ale'
 Plug 'heavenshell/vim-pydocstring', {'do': 'make install'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-"Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+
+Plug 'RRethy/vim-illuminate'
+
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'Shougo/echodoc.vim'
 call plug#end()
